@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Catalog Movie Ui Ux</string>
+
+    <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
+    <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
+
+    <string name="now_playing" translatable="false">Now Playing</string>
+    <string name="upcoming" translatable="false">Upcoming</string>
+    <string name="search_movies" translatable="false">Search Movies</string>
+    <string name="ronald_gunawan_r">Ronald Gunawan R</string>
+    <string name="geronald10_gmail_com">geronald10@gmail.com</string>
+    <string name="other" translatable="false">Others</string>
+    <string name="detail" translatable="false">Detail</string>
+    <string name="share" translatable="false">Share</string>
+    <string name="search" translatable="false">Search</string>
+    <string name="search_hint" translatable="false">Input movie title</string>
+    <string name="change_language_settings">Change Language Settings</string>
+    <string name="movie_rate">Movie Rate</string>
+    <string name="max_rate">/ 10</string>
+    <string name="release_date">Release Date</string>
+    <string name="overview">Overview</string>
+    <string name="default_rate">0.0</string>
+</resources>

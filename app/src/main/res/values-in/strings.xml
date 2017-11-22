@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Catalog Movie Ui Ux</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="now_playing">Sedang Tayang</string>
+    <string name="upcoming">Mendatang</string>
+    <string name="search_movies">Cari Film</string>
+    <string name="ronald_gunawan_r">Ronald Gunawan R</string>
+    <string name="geronald10_gmail_com">geronald10@gmail.com</string>
+    <string name="other">Lainnya</string>
+    <string name="detail">Rincian</string>
+    <string name="share">Bagikan</string>
+    <string name="search">Cari</string>
+    <string name="search_hint">Masukkan judul film</string>
+    <string name="change_language_settings">Ubah Pengaturan Bahasa</string>
+    <string name="movie_rate">Rating Film</string>
+    <string name="max_rate">/ 10</string>
+    <string name="release_date">Tanggal Rilis</string>
+    <string name="overview">Deskripsi</string>
+</resources>

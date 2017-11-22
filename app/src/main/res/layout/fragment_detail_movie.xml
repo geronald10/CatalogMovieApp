@@ -1,0 +1,208 @@
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="goronald.web.id.catalogmovieuiux.DetailMovieFragment">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapsing_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:contentScrim="?attr/colorPrimary"
+            app:expandedTitleMarginEnd="64dp"
+            app:expandedTitleMarginStart="48dp"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <ImageView
+                android:id="@+id/img_item_photo"
+                android:layout_width="match_parent"
+                android:layout_height="240dp"
+                android:background="@color/colorPrimaryDark"
+                android:fitsSystemWindows="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/poster"
+                app:layout_collapseMode="parallax"
+                app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed" />
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:layout_scrollFlags="scroll|enterAlways"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/tv_item_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="32dp"
+                android:gravity="center"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Thor: Ragnarok" />
+
+            <TextView
+                android:id="@+id/tv_item_year"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:textColor="@color/colorAccent"
+                android:textSize="18sp"
+                android:textStyle="italic"
+                app:layout_constraintEnd_toEndOf="@+id/tv_item_name"
+                app:layout_constraintStart_toStartOf="@+id/tv_item_name"
+                app:layout_constraintTop_toBottomOf="@id/tv_item_name"
+                tools:text="2017" />
+
+            <ImageView
+                android:id="@+id/iv_movie_poster"
+                android:layout_width="240dp"
+                android:layout_height="300dp"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:scaleType="fitCenter"
+                app:layout_constraintEnd_toEndOf="@+id/tv_item_name"
+                app:layout_constraintStart_toStartOf="@+id/tv_item_name"
+                app:layout_constraintTop_toBottomOf="@+id/tv_item_year"
+                tools:src="@drawable/poster" />
+
+            <TextView
+                android:id="@+id/tv_item_rate_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/movie_rate"
+                android:textColor="@color/colorSecondaryText"
+                android:textSize="14sp"
+                app:layout_constraintLeft_toLeftOf="@id/iv_movie_poster"
+                app:layout_constraintRight_toRightOf="@id/iv_movie_poster"
+                app:layout_constraintTop_toBottomOf="@id/iv_movie_poster" />
+
+            <View
+                android:id="@+id/horizontal_divider"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:background="@color/colorAccent"
+                app:layout_constraintLeft_toLeftOf="@id/tv_item_rate_title"
+                app:layout_constraintRight_toRightOf="@id/tv_item_rate_title"
+                app:layout_constraintTop_toBottomOf="@id/tv_item_rate_title" />
+
+            <RatingBar
+                android:id="@+id/rateBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_item_rate_title"
+                app:layout_constraintStart_toStartOf="@+id/tv_item_rate_title"
+                app:layout_constraintTop_toBottomOf="@+id/horizontal_divider" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/vertical_guideline_5"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+
+            <TextView
+                android:id="@+id/tv_item_rate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:text="@string/default_rate"
+                android:textColor="@color/colorTextToolbar"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintRight_toLeftOf="@id/vertical_guideline_5"
+                app:layout_constraintTop_toBottomOf="@id/rateBar" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/max_rate"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toRightOf="@id/vertical_guideline_5"
+                app:layout_constraintTop_toBottomOf="@id/rateBar" />
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/activity_vertical_margin"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                app:cardCornerRadius="5dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_item_rate">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingBottom="8dp"
+                    android:paddingLeft="@dimen/activity_horizontal_margin"
+                    android:paddingRight="@dimen/activity_horizontal_margin"
+                    android:paddingTop="8dp">
+
+                    <TextView
+                        style="@style/TextSpec.Field"
+                        android:text="@string/release_date" />
+
+                    <TextView
+                        android:id="@+id/tv_item_date"
+                        style="@style/TextSpec.Value"
+                        tools:text="12 November 2017" />
+
+                    <TextView
+                        style="@style/TextSpec.Field"
+                        android:text="@string/overview" />
+
+                    <TextView
+                        style="@style/TextSpec.Value"
+                        android:id="@+id/tv_item_overview"
+                        tools:text="Thor is imprisoned on the other side of the universe and finds himself in a race against time to get back to Asgard to stop Ragnarok, the destruction of his homeworld and the end of Asgardian civilization, at the hands of an all-powerful new threat, the ruthless Hela." />
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.design.widget.CoordinatorLayout>
