@@ -1,5 +1,6 @@
 package goronald.web.id.catalogmovieuiux;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -16,9 +17,16 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.SearchView;
 
 import java.util.ArrayList;
+
+import goronald.web.id.catalogmovieuiux.adapter.SearchAdapter;
+import goronald.web.id.catalogmovieuiux.entity.Movie;
+import goronald.web.id.catalogmovieuiux.utility.ItemClickSupport;
+
+import static goronald.web.id.catalogmovieuiux.db.DatabaseContract.CONTENT_URI;
 
 public class SearchFragment extends Fragment implements
         LoaderManager.LoaderCallbacks<ArrayList<Movie>>{
@@ -27,6 +35,7 @@ public class SearchFragment extends Fragment implements
     public static final String EXTRAS_TITLE = "extras_title";
     private RecyclerView mRecyclerView;
     private SearchAdapter mAdapter;
+    private ProgressBar progressBar;
 
     public SearchFragment() {
     }
@@ -39,7 +48,7 @@ public class SearchFragment extends Fragment implements
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.main, menu);
+        inflater.inflate(R.menu.menu_main, menu);
         final SearchView searchView = (SearchView) MenuItemCompat
                 .getActionView(menu.findItem(R.id.action_search));
         searchView.setQueryHint(getResources().getString(R.string.search_hint));
@@ -73,6 +82,7 @@ public class SearchFragment extends Fragment implements
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        progressBar = view.findViewById(R.id.progress_bar);
         mAdapter = new SearchAdapter(getContext());
         mAdapter.notifyDataSetChanged();
         mRecyclerView = view.findViewById(R.id.rv_search);
@@ -84,6 +94,8 @@ public class SearchFragment extends Fragment implements
             public void onItemClicked(RecyclerView recyclerView, int position, View v) {
                 DetailMovieFragment mDetailMovieFragment = new DetailMovieFragment();
                 Bundle mBundle = new Bundle();
+                Uri uri = Uri.parse(CONTENT_URI + "/" + mAdapter.getData().get(position).getMovieId());
+                mBundle.putString(DetailMovieFragment.EXTRA_MOVIE_ID_URI, String.valueOf(uri));
                 mBundle.putParcelable(DetailMovieFragment.EXTRA_MOVIE, mAdapter.getData().get(position));
                 mDetailMovieFragment.setArguments(mBundle);
                 FragmentManager mFragmentManager = getActivity().getSupportFragmentManager();
@@ -99,6 +111,7 @@ public class SearchFragment extends Fragment implements
 
     @Override
     public Loader<ArrayList<Movie>> onCreateLoader(int id, Bundle args) {
+        showProgressBar();
         String title = "";
         if (args != null) {
             title = args.getString(EXTRAS_TITLE);
@@ -111,10 +124,21 @@ public class SearchFragment extends Fragment implements
     @Override
     public void onLoadFinished(Loader<ArrayList<Movie>> loader, ArrayList<Movie> data) {
         mAdapter.setData(data);
+        hideProgressBar();
     }
 
     @Override
     public void onLoaderReset(Loader<ArrayList<Movie>> loader) {
         mAdapter.setData(null);
+    }
+
+    private void showProgressBar() {
+        progressBar.setVisibility(View.VISIBLE);
+        mRecyclerView.setVisibility(View.GONE);
+    }
+
+    private void hideProgressBar() {
+        progressBar.setVisibility(View.GONE);
+        mRecyclerView.setVisibility(View.VISIBLE);
     }
 }

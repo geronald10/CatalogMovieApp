@@ -1,5 +1,6 @@
-package goronald.web.id.catalogmovieuiux;
+package goronald.web.id.catalogmovieuiux.entity;
 
+import android.database.Cursor;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -8,8 +9,17 @@ import org.json.JSONObject;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import goronald.web.id.catalogmovieuiux.db.DatabaseContract;
+
+import static android.provider.BaseColumns._ID;
+import static goronald.web.id.catalogmovieuiux.db.DatabaseContract.getColumnDouble;
+import static goronald.web.id.catalogmovieuiux.db.DatabaseContract.getColumnInt;
+import static goronald.web.id.catalogmovieuiux.db.DatabaseContract.getColumnString;
+
 public class Movie implements Parcelable {
 
+    private int id;
+    private int movieId;
     private String movieName;
     private String movieOverview;
     private String movieReleaseDate;
@@ -18,8 +28,12 @@ public class Movie implements Parcelable {
     private String movieBackdrop;
     private double movieVoteAverage;
 
+    public Movie() {
+    }
+
     public Movie(JSONObject object) {
         try {
+            int id = object.getInt("id");
             String title = object.getString("title");
             String overview = object.getString("overview");
             String releaseDate = object.getString("release_date");
@@ -48,6 +62,7 @@ public class Movie implements Parcelable {
                 fullBackdropPath = "http://image.tmdb.org/t/p/w780" + backDropPath;
             }
 
+            movieId = id;
             movieName = title;
             movieOverview = overview;
             movieReleaseDate = newDateformatted;
@@ -59,6 +74,22 @@ public class Movie implements Parcelable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getMovieId() {
+        return movieId;
+    }
+
+    public void setMovieId(int movieId) {
+        this.movieId = movieId;
     }
 
     public String getMovieName() {
@@ -117,6 +148,17 @@ public class Movie implements Parcelable {
         this.movieVoteAverage = movieVoteAverage;
     }
 
+    public Movie(Cursor cursor) {
+        this.id = getColumnInt(cursor, _ID);
+        this.movieId = getColumnInt(cursor, DatabaseContract.FavouriteMovieColumns.MOVIE_ID);
+        this.movieName = getColumnString(cursor, DatabaseContract.FavouriteMovieColumns.TITLE);
+        this.movieOverview = getColumnString(cursor, DatabaseContract.FavouriteMovieColumns.OVERVIEW);
+        this.movieReleaseDate = getColumnString(cursor, DatabaseContract.FavouriteMovieColumns.RELEASE_DATE);
+        this.moviePoster = getColumnString(cursor, DatabaseContract.FavouriteMovieColumns.POSTER);
+        this.movieBackdrop = getColumnString(cursor, DatabaseContract.FavouriteMovieColumns.BACKDROP);
+        this.movieVoteAverage = getColumnDouble(cursor, DatabaseContract.FavouriteMovieColumns.VOTE_AVG);
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -124,6 +166,8 @@ public class Movie implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(this.id);
+        dest.writeInt(this.movieId);
         dest.writeString(this.movieName);
         dest.writeString(this.movieOverview);
         dest.writeString(this.movieReleaseDate);
@@ -134,6 +178,8 @@ public class Movie implements Parcelable {
     }
 
     protected Movie(Parcel in) {
+        this.id = in.readInt();
+        this.movieId = in.readInt();
         this.movieName = in.readString();
         this.movieOverview = in.readString();
         this.movieReleaseDate = in.readString();

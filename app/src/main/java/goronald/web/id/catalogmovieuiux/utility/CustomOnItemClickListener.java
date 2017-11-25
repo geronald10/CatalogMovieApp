@@ -1,4 +1,4 @@
-package goronald.web.id.catalogmovieuiux;
+package goronald.web.id.catalogmovieuiux.utility;
 
 import android.view.View;
 

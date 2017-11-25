@@ -5,9 +5,10 @@
     <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
     <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
 
-    <string name="now_playing" translatable="false">Now Playing</string>
-    <string name="upcoming" translatable="false">Upcoming</string>
-    <string name="search_movies" translatable="false">Search Movies</string>
+    <string name="now_playing">Now Playing</string>
+    <string name="upcoming">Upcoming</string>
+    <string name="search_movies">Search Movies</string>
+    <string name="favourite_movies">Favourite Movies</string>
     <string name="ronald_gunawan_r">Ronald Gunawan R</string>
     <string name="geronald10_gmail_com">geronald10@gmail.com</string>
     <string name="other" translatable="false">Others</string>
@@ -21,4 +22,8 @@
     <string name="release_date">Release Date</string>
     <string name="overview">Overview</string>
     <string name="default_rate">0.0</string>
+    <string name="favourite">Favourite</string>
+    <string name="add_to_favourite">Add to Favourite</string>
+    <string name="remove_from_favourite">Remove from Favourite</string>
+
 </resources>

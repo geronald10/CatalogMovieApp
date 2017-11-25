@@ -1,4 +1,4 @@
-package goronald.web.id.catalogmovieuiux;
+package goronald.web.id.catalogmovieuiux.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -11,6 +11,9 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
+
+import goronald.web.id.catalogmovieuiux.entity.Movie;
+import goronald.web.id.catalogmovieuiux.R;
 
 public class UpcomingAdapter extends RecyclerView.Adapter<UpcomingAdapter.UpcomingViewHolder> {
 

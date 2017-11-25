@@ -110,6 +110,9 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_search) {
             title = getResources().getString(R.string.search_movies);
             fragment = new SearchFragment();
+        } else if (id == R.id.nav_favourite) {
+            title = getString(R.string.favourite_movies);
+            fragment = new FavouriteMovieFragment();
         } else if (id == R.id.nav_settings) {
             Intent mIntent = new Intent(Settings.ACTION_LOCALE_SETTINGS);
             startActivity(mIntent);

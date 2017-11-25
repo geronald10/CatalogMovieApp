@@ -12,6 +12,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import cz.msebera.android.httpclient.Header;
+import goronald.web.id.catalogmovieuiux.entity.Movie;
 
 public class NowPlayingAsyncTaskLoader extends AsyncTaskLoader<ArrayList<Movie>> {
 

@@ -1,4 +1,4 @@
-package goronald.web.id.catalogmovieuiux;
+package goronald.web.id.catalogmovieuiux.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -10,10 +10,10 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
+
+import goronald.web.id.catalogmovieuiux.entity.Movie;
+import goronald.web.id.catalogmovieuiux.R;
 
 public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchViewHolder> {
 

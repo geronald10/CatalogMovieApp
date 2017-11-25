@@ -1,7 +1,9 @@
-package goronald.web.id.catalogmovieuiux;
+package goronald.web.id.catalogmovieuiux.utility;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+
+import goronald.web.id.catalogmovieuiux.R;
 
 public class ItemClickSupport {
     private final RecyclerView mRecyclerView;

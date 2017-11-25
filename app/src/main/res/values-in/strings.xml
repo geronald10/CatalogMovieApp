@@ -8,6 +8,7 @@
     <string name="now_playing">Sedang Tayang</string>
     <string name="upcoming">Mendatang</string>
     <string name="search_movies">Cari Film</string>
+    <string name="favourite_movies">Film Favorit</string>
     <string name="ronald_gunawan_r">Ronald Gunawan R</string>
     <string name="geronald10_gmail_com">geronald10@gmail.com</string>
     <string name="other">Lainnya</string>
@@ -20,4 +21,7 @@
     <string name="max_rate">/ 10</string>
     <string name="release_date">Tanggal Rilis</string>
     <string name="overview">Deskripsi</string>
+    <string name="favourite">Favorit</string>
+    <string name="add_to_favourite">Tambah ke Favorit</string>
+    <string name="remove_from_favourite">Hapus dari Favorit</string>
 </resources>
