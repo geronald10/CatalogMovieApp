@@ -169,6 +169,7 @@ public class DetailMovieFragment extends Fragment {
         int[] state = {item.isChecked() ? android.R.attr.state_checked : android.R.attr.state_empty};
         stateListDrawable.setState(state);
         item.setIcon(stateListDrawable.getCurrent());
+        cursor.close();
         super.onPrepareOptionsMenu(menu);
     }
 

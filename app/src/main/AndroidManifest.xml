@@ -2,6 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="goronald.web.id.catalogmovieuiux">
 
+    <permission
+        android:name="goronald.web.id.catalogmovieuiux.READ_DATABASE"
+        android:protectionLevel="normal" />
+    <permission
+        android:name="goronald.web.id.catalogmovieuiux.WRITE_DATABASE"
+        android:protectionLevel="normal" />
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -27,7 +34,10 @@
             android:name=".provider.FavouriteMovieProvider"
             android:authorities="goronald.web.id.catalogmovieuiux"
             android:enabled="true"
-            android:exported="true"/>
+            android:exported="true"
+            android:readPermission="goronald.web.id.catalogmovieuiux.READ_DATABASE"
+            android:writePermission="goronald.web.id.catalogmovieuiux.WRITE_DATABASE" />
+
     </application>
 
 </manifest>
