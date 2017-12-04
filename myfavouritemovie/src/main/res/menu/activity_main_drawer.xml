@@ -18,12 +18,12 @@
             android:title="@string/favourite" />
     </group>
 
-    <item android:title="@string/preferences">
+    <item android:title="@string/other">
         <menu>
             <item
                 android:id="@+id/nav_settings"
                 android:icon="@drawable/ic_menu_settings"
-                android:title="@string/setting" />
+                android:title="@string/change_language_settings" />
         </menu>
     </item>
 

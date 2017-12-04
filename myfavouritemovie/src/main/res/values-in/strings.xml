@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MyFavouriteMovie</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Pengaturan Bahasa</string>
+    <string name="home">Halaman Utama</string>
+    <string name="search">Cari Film</string>
+    <string name="favourite">Film Favorit</string>
+    <string name="change_language_settings">Ubah Pengaturan Bahasa</string>
+    <string name="share">Bagikan</string>
+    <string name="detail">Detil</string>
+    <string name="other">Lainnya</string>
+
+    <string name="overview">Deskripsi</string>
+    <string name="rating">Rating Film</string>
+    <string name="default_rate">0.0</string>
+    <string name="max_rate">/ 10</string>
+    <string name="release_date">Tanggal Rilis:</string>
+    <string name="add_to_favourite">Tambahkan ke Film Favorit</string>
+    <string name="remove_from_favourite">Hapus dari Film Favorit</string>
+    <string name="search_hint">Ketik disini..</string>
+    <string name="now_playing">Sedang Tayang</string>
+    <string name="upcoming">Mendatang</string>
+    <string name="movie_detail">Detil Film</string>
+</resources>

@@ -1,6 +1,8 @@
 package goronald.web.id.myfavouritemovie;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -85,7 +87,8 @@ public class MainActivity extends AppCompatActivity
             title = getString(R.string.favourite);
             fragment = new FavouriteFragment();
         } else if (id == R.id.nav_settings) {
-
+            Intent mIntent = new Intent(Settings.ACTION_LOCALE_SETTINGS);
+            startActivity(mIntent);
         }
         toolbar.setTitle(title);
 
