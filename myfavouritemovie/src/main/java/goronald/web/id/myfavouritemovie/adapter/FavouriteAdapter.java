@@ -3,11 +3,6 @@ package goronald.web.id.myfavouritemovie.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
-import android.net.Uri;
-import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -96,7 +91,7 @@ public class FavouriteAdapter extends CursorRecyclerAdapter<FavouriteAdapter.Fav
                             cursor.moveToPosition(position);
                             Movie movie = new Movie(cursor);
                             Intent intent = new Intent(context, DetailActivity.class);
-                            intent.putExtra(DetailActivity.EXTRA_MOVIE, movie);
+                            intent.putExtra(DetailActivity.EXTRA_DETAIL_MOVIE, movie);
                             context.startActivity(intent);
                         }
                     }));
@@ -107,7 +102,7 @@ public class FavouriteAdapter extends CursorRecyclerAdapter<FavouriteAdapter.Fav
                             Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
                             emailIntent.setType("text/plain");
                             emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT,
-                                    "[Share] My Favourite Movie - Catalog Movie UI/UX");
+                                    "[Share] My Favourite Movie - MyFavouriteMovie App");
                             emailIntent.putExtra(Intent.EXTRA_TEXT,
                                     "My Favourite Movie: \nTitle: " +
                                             getColumnString(cursor, TITLE) + "\nRelease Date: " +

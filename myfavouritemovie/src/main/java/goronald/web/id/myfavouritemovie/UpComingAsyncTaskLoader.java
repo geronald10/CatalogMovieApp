@@ -1,9 +1,9 @@
 package goronald.web.id.myfavouritemovie;
 
+
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.content.AsyncTaskLoader;
-import android.util.Log;
 
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.SyncHttpClient;
@@ -14,23 +14,20 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import cz.msebera.android.httpclient.Header;
+import goronald.web.id.myfavouritemovie.adapter.UpComingAdapter;
 import goronald.web.id.myfavouritemovie.entity.Movie;
 
-public class SearchAsyncTaskLoader extends AsyncTaskLoader<ArrayList<Movie>> {
-
-    private static final String TAG = SearchAsyncTaskLoader.class.getSimpleName();
+public class UpComingAsyncTaskLoader extends AsyncTaskLoader<ArrayList<Movie>> {
 
     private ArrayList<Movie> mData;
     private boolean mHasResult = false;
-    private String title;
     private int mPage;
 
-    public SearchAsyncTaskLoader(Context context, Bundle args) {
+    public UpComingAsyncTaskLoader(Context context, Bundle args) {
         super(context);
         onContentChanged();
-        this.title = args.getString(SearchFragment.EXTRAS_TITLE);
-        this.mPage = args.getInt(SearchFragment.EXTRAS_PAGE);
-        this.mData = args.getParcelableArrayList(SearchFragment.EXTRAS_MOVIE_OLD_DATA);
+        this.mData = args.getParcelableArrayList(TabUpComingFragment.EXTRAS_MOVIE_OLD_DATA);
+        this.mPage = args.getInt(TabUpComingFragment.EXTRAS_PAGE);
     }
 
     @Override
@@ -61,26 +58,17 @@ public class SearchAsyncTaskLoader extends AsyncTaskLoader<ArrayList<Movie>> {
 
     @Override
     public ArrayList<Movie> loadInBackground() {
-        String url;
-        Log.d(TAG, "title: " + title);
-        Log.d(TAG, "page: " + mPage);
-
-        if (title != null)
-            url = BuildConfig.SEARCH_URL + "?api_key=" + BuildConfig.API_KEY +
-                    "&language=en-US&query=" + title + "&page=" + mPage;
-        else {
-            url = BuildConfig.DISCOVER_URL + "?api_key=" + BuildConfig.API_KEY +
-                    "&language=en-US&page=" + mPage;
-        }
-
-        final ArrayList<Movie> movieItemList;
-        if (mData == null) {
-            movieItemList = new ArrayList<>();
-        } else {
-            movieItemList = mData;
-        }
-
         SyncHttpClient client = new SyncHttpClient();
+        String url = BuildConfig.BASE_URL + "upcoming?api_key=" +
+                BuildConfig.API_KEY + "&language=en-US&page=" + mPage;
+
+        final ArrayList<Movie> movieList;
+        if (mData == null) {
+            movieList = new ArrayList<>();
+        } else {
+            movieList = mData;
+        }
+
         client.get(url, new AsyncHttpResponseHandler() {
             @Override
             public void onStart() {
@@ -95,13 +83,13 @@ public class SearchAsyncTaskLoader extends AsyncTaskLoader<ArrayList<Movie>> {
                     JSONObject responseObject = new JSONObject(result);
                     JSONArray resultList = responseObject.getJSONArray("results");
                     if (resultList.length() > 0) {
-                        for (int i = 0; i < resultList.length(); i++) {
+                        for (int i=0; i< resultList.length(); i++) {
                             JSONObject movie = resultList.getJSONObject(i);
                             Movie movieItems = new Movie(movie);
-                            movieItemList.add(movieItems);
+                            movieList.add(movieItems);
                         }
                     } else {
-                        movieItemList.add(null);
+                        movieList.add(null);
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -112,7 +100,7 @@ public class SearchAsyncTaskLoader extends AsyncTaskLoader<ArrayList<Movie>> {
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
             }
         });
-        return movieItemList;
+        return movieList;
     }
 
     private void onReleaseResources(ArrayList<Movie> data) {

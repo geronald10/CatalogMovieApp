@@ -76,7 +76,8 @@ public class MainActivity extends AppCompatActivity
         Fragment fragment = null;
 
         if (id == R.id.nav_home) {
-            // Handle the camera action
+            title = getString(R.string.home);
+            fragment = new HomeFragment();
         } else if (id == R.id.nav_search) {
             title = getString(R.string.search);
             fragment = new SearchFragment();

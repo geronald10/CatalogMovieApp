@@ -3,7 +3,6 @@ package goronald.web.id.myfavouritemovie.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -18,11 +17,11 @@ import goronald.web.id.myfavouritemovie.utils.CustomOnItemClickListener;
 
 import static goronald.web.id.myfavouritemovie.DetailActivity.EXTRA_DETAIL_MOVIE;
 
-public class SearchAdapter extends CustomAdapter<Movie> {
+public class UpComingAdapter extends CustomAdapter<Movie> {
 
     private Context context;
 
-    public SearchAdapter(Context context) {
+    public UpComingAdapter(Context context) {
         super(context);
         this.context = context;
     }
@@ -34,38 +33,45 @@ public class SearchAdapter extends CustomAdapter<Movie> {
 
     @Override
     public RecyclerView.ViewHolder getYourItemViewHolder(ViewGroup parent) {
-        return new SearchViewHolder(mInflater.inflate(R.layout.item_search_movie, parent, false));
+        return new UpComingViewHolder(mInflater.inflate(R.layout.item_upcoming_movie, parent, false));
     }
 
     @Override
     public void bindYourViewHolder(RecyclerView.ViewHolder holder, int position) {
-        if (holder instanceof SearchViewHolder) {
-            Log.d("bindViewHolder", "movie title: " + mItems.get(position).getMovieName());
-            SearchViewHolder viewHolder = (SearchViewHolder) holder;
-            viewHolder.tvMovieTitle.setText(mItems.get(position).getMovieName());
+        if (holder instanceof UpComingViewHolder) {
+            UpComingViewHolder viewHolder = (UpComingViewHolder) holder;
             Glide.with(context)
                     .load(mItems.get(position).getMoviePoster())
+                    .override(350, 350)
                     .into(viewHolder.ivMoviePoster);
+            viewHolder.tvMovieTitle.setText(mItems.get(position).getMovieName());
+            viewHolder.tvMovieOverview.setText(mItems.get(position).getMovieOverview());
+            viewHolder.tvMovieReleaseDate.setText(mItems.get(position).getMovieReleaseDate());
             viewHolder.itemView.setOnClickListener(new CustomOnItemClickListener(position,
                     new CustomOnItemClickListener.OnItemClickCallback() {
-                @Override
-                public void onItemClicked(View view, int position) {
-                    Intent intent = new Intent(context, DetailActivity.class);
-                    intent.putExtra(EXTRA_DETAIL_MOVIE, mItems.get(position));
-                    context.startActivity(intent);
-                }
-            }));
+                        @Override
+                        public void onItemClicked(View view, int position) {
+                            Intent intent = new Intent(context, DetailActivity.class);
+                            intent.putExtra(EXTRA_DETAIL_MOVIE, mItems.get(position));
+                            context.startActivity(intent);
+                        }
+                    }));
         }
     }
 
-    class SearchViewHolder extends RecyclerView.ViewHolder {
+
+    class UpComingViewHolder extends RecyclerView.ViewHolder {
         ImageView ivMoviePoster;
         TextView tvMovieTitle;
+        TextView tvMovieOverview;
+        TextView tvMovieReleaseDate;
 
-        public SearchViewHolder(View itemView) {
+        public UpComingViewHolder(View itemView) {
             super(itemView);
             ivMoviePoster = itemView.findViewById(R.id.img_item_photo);
             tvMovieTitle = itemView.findViewById(R.id.tv_item_name);
+            tvMovieOverview = itemView.findViewById(R.id.tv_item_overview);
+            tvMovieReleaseDate = itemView.findViewById(R.id.tv_item_date);
         }
     }
 }

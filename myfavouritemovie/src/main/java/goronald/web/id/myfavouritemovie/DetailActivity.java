@@ -33,7 +33,7 @@ import static goronald.web.id.myfavouritemovie.db.DatabaseContract.FavouriteMovi
 import static goronald.web.id.myfavouritemovie.db.DatabaseContract.getColumnString;
 
 public class DetailActivity extends AppCompatActivity implements View.OnClickListener {
-    public static String EXTRA_MOVIE = "extra_movie";
+    public static String EXTRA_DETAIL_MOVIE = "extra_movie";
     private TextView tvTitle, tvReleaseDate, tvOverview, tvRating;
     private RatingBar rbMovieRating;
     private ImageButton btnFavourite;
@@ -46,7 +46,7 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        movie = getIntent().getParcelableExtra(EXTRA_MOVIE);
+        movie = getIntent().getParcelableExtra(EXTRA_DETAIL_MOVIE);
         tvTitle = findViewById(R.id.tv_movie_title);
         tvReleaseDate = findViewById(R.id.tv_movie_release_date);
         tvOverview = findViewById(R.id.tv_movie_overview);
@@ -108,7 +108,7 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
                 Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
                 emailIntent.setType("text/plain");
                 emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT,
-                        "[Share] My Favourite Movie - My Favourite Movie");
+                        "[Share] My Favourite Movie - MyFavouriteMovie App");
                 emailIntent.putExtra(Intent.EXTRA_TEXT,
                         "My Favourite Movie: \nTitle: " +
                                 movie.getMovieName() + "\nRelease Date: " +
