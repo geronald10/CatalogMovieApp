@@ -28,7 +28,7 @@ public class HomeFragment extends Fragment {
         mViewPager = view.findViewById(R.id.container);
         tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.now_playing)));
         tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.upcoming)));
-        tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
+        tabLayout.setTabMode(TabLayout.MODE_FIXED);
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         mHomePagerAdapter = new HomePagerAdapter(getChildFragmentManager(), tabLayout.getTabCount());
         mViewPager.setAdapter(mHomePagerAdapter);
